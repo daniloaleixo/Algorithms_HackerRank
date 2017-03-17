@@ -59,7 +59,11 @@ def candies():
 			if(right_neighbor < n and rating[right_neighbor] < rating[index]):
 				my_candy = candies[right_neighbor] + 1
 			if(left_neighbor >= 0 and rating[left_neighbor] < rating[index]):
-				my_candy = candies[left_neighbor] + 1
+				# if i've already put a different value then we have to compare 
+				if(my_candy > 1):
+					my_candy = max(my_candy, candies[left_neighbor] + 1)
+				else:
+					my_candy = candies[left_neighbor] + 1
 
 			candies[index] = my_candy
 
